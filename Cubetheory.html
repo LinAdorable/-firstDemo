@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>向梦想出发吧，骚年！</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            background-color: #000;
+        }
+        /*标题样式及动画效果*/
+        h2{
+            margin:40px auto;
+            font-size: 50px;
+            font-family: "Microsoft Yahei";
+            font-weight: normal;
+            color:red;
+            text-align: center;
+            /*字体闪烁的动画效果*/
+            animation:  bigger 2s infinite  alternate;
+        }
+        @keyframes bigger {
+            0%{
+                text-shadow: 0 0 10px #ffe843;
+            }
+            100%{
+                text-shadow: 0px 0px 30px #fdffd1;
+                color:blue;
+            }
+        }
+        /*设置box的样式*/
+        .box{
+            width: 250px;
+            height: 250px;
+            border: 1px dashed red;
+            margin: 100px auto;
+            position: relative;
+            /*子盒子保持3D的效果*/
+            transform-style:preserve-3d ;
+            animation:  box 1s linear forwards 1s ,rot 6s linear infinite 14s;
+        }
+        /*倾斜展示3d效果*/
+        @keyframes box {
+            0%{
+            }
+            100%{
+                transform:rotateY(-50deg) rotateX(30deg);
+            }
+        }
+            /*360度旋转*/
+        @keyframes rot {
+            0%{
+                transform:rotateY(-50deg) rotateX(30deg);
+            }
+            100%{
+                transform:rotateY(310deg) rotateX(390deg) ;
+            }
+        }
+        /*设置所有盒子的大小及颜色*/
+        .box div{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            text-align: center;
+            font-size: 50px;
+            line-height: 250px;
+            color:rgba(255,255,255,0.4) ;
+        }
+        /*设置每个面的移动及旋转的动画*/
+        @keyframes left {
+            0%{
+                background-color: rgba(0,255,0,0.5);
+            }
+
+            5%{
+                background-color: rgba(0,255,0,0);
+            }
+
+            10%{
+                background-color: rgba(0,255,0,0.5);
+                /*transform: translateX(0);*/
+            }
+            50%{
+                background-color: rgba(0,255,0,0.5);
+                transform: translateX(-50%);
+            }
+            100%{
+                background-color: rgba(0,255,0,0.4);
+                transform:translateX(-50%) rotateY(-90deg);
+            }
+        }
+        /*左侧调用动画*/
+        .box .left{
+            animation: left  2s linear forwards 2s;
+        }
+        /*右侧*/
+        @keyframes right {
+            0%{
+                background-color: rgba(255,0,0,0);
+            }
+
+            5%{
+                background-color: rgba(255,0,0,0.5);
+            }
+
+            10%{
+                background-color: rgba(255,0,0,0.5);
+                /*transform: translateX(0);*/
+            }
+            50%{
+                background-color: rgba(255,0,0,0.5);
+                transform: translateX(50%);
+            }
+            100%{
+                background-color: rgba(255,0,0,0.4);
+                transform:translateX(50%) rotateY(90deg);
+            }
+        }
+        /*右侧调用动画*/
+        .box .right{
+            animation: right  2s linear forwards 4s;
+        }
+        /*上侧*/
+        @keyframes up {
+            0%{
+                background-color: rgba(0,111,255,0);
+            }
+
+            5%{
+                background-color: rgba(0,111,255,0.5);
+            }
+
+            10%{
+                background-color: rgba(0,111,255,0);
+
+            }
+            50%{
+                background-color: rgba(0,111,255,0.5);
+                transform: translateY(-50%);
+            }
+            100%{
+                background-color: rgba(0,111,255,0.4);
+                transform:translateY(-50%) rotateX(90deg);
+            }
+        }
+        /*上侧调用动画*/
+        .box .up{
+            animation: up  2s linear forwards 6s;
+        }
+        /*下侧*/
+        @keyframes down  {
+            0%{
+                background-color: rgba(255,111,12,0);
+            }
+
+            5%{
+                background-color: rgba(255,111,12,0.5);;
+            }
+
+            10%{
+                background-color: rgba(255,111,12,0);
+
+            }
+            50%{
+                background-color: rgba(255,111,12,0.5);
+                transform: translateY(50%);
+            }
+            100%{
+                background-color: rgba(255,111,12,0.4);
+                transform:translateY(50%) rotateX(90deg);
+            }
+        }
+        /*下侧调用动画*/
+        .box .down{
+            animation: down  2s linear forwards 8s;
+        }
+        /*前面*/
+        @keyframes forward  {
+            0%{
+                background-color: rgba(255,255,0,0.5);
+            }
+
+            5%{
+                background-color: rgba(255,255,0,0);;
+            }
+
+            10%{
+                background-color: rgba(255,255,0,0.5);
+
+            }
+            100%{
+                background-color: rgba(255,255,0,0.4);
+                transform:translateZ(125px) ;
+            }
+        }
+        /*后面调用动画*/
+        .box .forward{
+            animation: forward  2s linear forwards 10s;
+        }
+        /*前面*/
+        @keyframes back  {
+            0%{
+                background-color: rgba(0,255,255,0.5);
+            }
+
+            5%{
+                background-color: rgba(0,255,255,0);;
+            }
+
+            10%{
+                background-color: rgba(0,255,255,0.5);
+
+            }
+            100%{
+                background-color: rgba(0,255,255,0.4);
+                transform:translateZ(-125px) ;
+            }
+        }
+        /*后面调用动画*/
+        .box .back{
+            animation: back  2s linear forwards 12s;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="box">
+    <div class="up">上</div>
+    <div class="down">下</div>
+    <div class="left">左</div>
+    <div class="right">右</div>
+    <div class="forward">前</div>
+    <div class="back">后</div>
+</div>
+<h2>正方体原理</h2>
+</body>
+</html>
